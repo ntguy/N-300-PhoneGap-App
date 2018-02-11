@@ -15,7 +15,11 @@
     <author href="https://github.com/ntguy" email="nicalaitguy@gmail.com">
         Nicalai Guy
     </author>
-
+  
+    <icon src="icon.png" />   
+    <allow-navigation href="*" />   <!-- stay in webview -->
+    <preference name="stay-in-webview"  value="false" /> 
+  
     <preference name="permissions"                value="none"/>
     <plugin name="cordova-plugin-whitelist" />
     <access origin="*" />
