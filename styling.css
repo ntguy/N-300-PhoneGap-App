@@ -1,0 +1,15 @@
+img {
+    display: block;
+    margin: 0 auto;
+}
+
+#outID {
+  color: gold;
+  font-size: 200%;
+  padding-top: .75em;
+  text-align: center;
+}
+
+label {
+  font-style: italic;
+}

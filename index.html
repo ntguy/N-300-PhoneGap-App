@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Legit ID Generator</title>
+	<meta charset="utf-8" http-equiv="cache-control" content="no-cache">
+    <link rel="stylesheet" href="styling.css"> <!-- more styling -->
+    <!-- for mobile -->
+    <link rel="apple-touch-icon" href="icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+
+    <link rel="stylesheet" href="themes/V2.min.css" />
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" /> 
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> 
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> 
+   
+
+    <script type = "text/javascript">
+      function genID(){
+        
+        if(inFirstName.value.length == 0)  //defaults if name is left blank
+          inFirstName.value = "Super";
+        if(inLastName.value.length == 0)
+          inLastName.value = "Spy";
+        var strFirstName = inFirstName.value;
+        var strLastName = inLastName.value;
+
+        var arrayFirstName = strFirstName.split(""); //splits names into character arrays
+        var arrayLastName = strLastName.split("");
+        
+        var begin1 = arrayFirstName[0]; //gets the first character of each original name
+        var begin2 = arrayLastName[0];
+        arrayFirstName[0] = begin2; //swaps them
+        arrayLastName[0] = begin1;
+        
+        var outFirstName = arrayFirstName.join(""); //joins the arrays back into strings 
+        var outLastName = arrayLastName.join("");
+        
+        var inBirthday = inDate.value;
+        var strInBirthday = inBirthday.split("-"); //splits the DOB into YYYY, MM, DD
+        strInBirthday[0] = strInBirthday[0] - 1; //makes the year one prior
+        var tempMonth = strInBirthday[1];
+        var tempDay = (strInBirthday[2])%12;
+        strInBirthday[1] = tempDay;
+        strInBirthday[2] = tempMonth; //swaps the birth month and day, the new month being adjusted to not go out of bounds
+        var outBirthday = strInBirthday [1] +  "/" + strInBirthday[2] + "/" + strInBirthday[0];
+        var output = (outFirstName + " " + outLastName + ",  born " + outBirthday);
+        
+        $("#outID").html(output); //replaces the contents of the output label with the generated identity
+        console.log(outFirstName + " " + outLastName + ",  born " + outBirthday);
+      }// end function
+ 
+      function theme () {
+        console.log("pls");
+        window.location.href = "https://cs.iupui.edu/~ntguy/n300/JQMobileSite/light.html";
+      }
+    </script>
+</head>
+<body>
+  <div data-role="page" data-theme="b">
+    <div id = "head" data-role="header" data-position="inline">
+      <h1>Legit ID Generator!</h1>
+      <a onclick = "theme()" class="ui-btn-right" data-icon="eye">Theme</a>
+    </div>
+    <div id = "content" data-role="content" data-theme="b">
+      <form action = "">
+        <label>First Name</label>
+        <input type = "text"
+               id = "inFirstName"
+               value = "Tom" />
+        <label>Last Name</label>
+        <input type = "text"
+               id = "inLastName"
+               value = "Hanks"/>
+        <label>Date of Birth</label>
+        <input type = "date"
+               id = "inDate"
+               value = "1956-07-09" />
+        <button type = "button"
+                onclick = "genID()">
+        Generate ID
+        </button>
+        <label id = outID>New Name, New DOB</label>
+      </form>
+    </div> <!-- end content -->
+    <img class = "resize"
+         src="icon.png" 
+         alt="We are the best ID Maker! 5 Stars!">
+  </div> <!-- end page -->
+</body>
+</html>
