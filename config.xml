@@ -18,7 +18,7 @@
   
     <icon src="icon.png" />   
     <allow-navigation href="*" />   <!-- stay in webview -->
-    <preference name="stay-in-webview"  value="false" /> 
+    <preference name="stay-in-webview"  value="true" /> 
   
     <preference name="permissions"                value="none"/>
     <plugin name="cordova-plugin-whitelist" />
